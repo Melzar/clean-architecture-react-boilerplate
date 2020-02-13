@@ -1,0 +1,63 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true,
+        "jest": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "plugin:import/typescript",
+        "airbnb",
+        "plugin:prettier/recommended"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint",
+        "emotion",
+        "better-styled-components"
+    ],
+    "rules": {
+        "react/jsx-filename-extension": "off",
+        "react/jsx-one-expression-per-line": "off",
+
+        "import/prefer-default-export": "off",
+        "import/order": [
+            "error",
+            {
+                "groups": [
+                    "builtin",
+                    "external",
+                    "internal",
+                    ["parent", "sibling", "index"]
+                ],
+                "newlines-between": "always-and-inside-groups"
+            }
+        ],
+
+        "better-styled-components/sort-declarations-alphabetically": "error"
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "paths": ["src"],
+                "extensions": [
+                    ".js",
+                    ".ts",
+                    ".tsx"
+                ]
+            }
+        }
+    }
+}
