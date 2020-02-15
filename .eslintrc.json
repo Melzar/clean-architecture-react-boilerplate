@@ -2,12 +2,14 @@
     "env": {
         "browser": true,
         "es6": true,
-        "jest": true
+        "jest": true,
+        "node": true
     },
     "extends": [
-        "plugin:react/recommended",
-        "plugin:import/typescript",
         "airbnb",
+        "plugin:import/typescript",
+        "eslint:recommended",
+        "plugin:react/recommended",
         "plugin:prettier/recommended"
     ],
     "globals": {
@@ -31,7 +33,14 @@
     "rules": {
         "react/jsx-filename-extension": "off",
         "react/jsx-one-expression-per-line": "off",
+        "react/jsx-uses-react": "error",
+        "react/jsx-uses-vars": "error",
+        "react/jsx-props-no-spreading": "off",
+        "no-useless-constructor": "off",
+        "no-empty-function": "off",
+        "class-methods-use-this": "off",
 
+        "import/no-extraneous-dependencies": "off",
         "import/prefer-default-export": "off",
         "import/order": [
             "error",
@@ -45,9 +54,67 @@
                 "newlines-between": "always-and-inside-groups"
             }
         ],
+        "better-styled-components/sort-declarations-alphabetically": "error",
 
-        "better-styled-components/sort-declarations-alphabetically": "error"
+        "@typescript-eslint/no-unused-vars": "error"
     },
+    "overrides": [
+        {
+            "files": ["src/dataStore/**/*"],
+            "rules": {
+                "no-restricted-imports": [
+                    "error",
+                    {
+                        "patterns": ["ioc", "data", "ui"]
+                    }
+                ]
+            }
+        },
+        {
+            "files": ["src/ui/**/*"],
+            "rules": {
+                "no-restricted-imports": [
+                    "error",
+                    {
+                        "patterns": ["ioc", "data"]
+                    }
+                ]
+            }
+        },
+        {
+            "files": ["src/data/**/*"],
+            "rules": {
+                "no-restricted-imports": [
+                    "error",
+                    {
+                        "patterns": ["ioc", "ui", "dataStore"]
+                    }
+                ]
+            }
+        },
+        {
+            "files": ["src/domain/**/*"],
+            "rules": {
+                "no-restricted-imports": [
+                    "error",
+                    {
+                        "patterns": ["ioc", "ui", "data", "dataStore"]
+                    }
+                ]
+            }
+        },
+        {
+            "files": ["src/mocks/**/*"],
+            "rules": {
+                "no-restricted-imports": [
+                    "error",
+                    {
+                        "patterns": ["ioc", "ui", "dataStore"]
+                    }
+                ]
+            }
+        }
+    ],
     "settings": {
         "import/resolver": {
             "node": {
@@ -58,6 +125,12 @@
                     ".tsx"
                 ]
             }
+        },
+        "import/parsers": {
+            "@typescript-eslint/parser": [
+                ".ts",
+                ".tsx"
+            ]
         }
     }
 }

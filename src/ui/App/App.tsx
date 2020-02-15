@@ -1,33 +1,28 @@
 import React from 'react';
 import { ThemeProvider } from 'emotion-theming';
 
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+// eslint-disable-next-line no-restricted-imports
+import { appContainer } from 'ioc/AppContainer';
+
 import { THEME } from 'ui/common/consts/theme';
 import { GlobalStyles } from 'ui/common/styles/Global';
 
-import logo from 'ui/common/assets/images/logo.svg';
+import { DependencyProvider } from 'ui/common/hooks/DependencyProvider/DependencyProvider';
+import { Router } from 'ui/common/routing/router';
 
-import 'ui/App/App.css';
-
-export const App = () => {
-  return (
+export const App = () => (
+  <DependencyProvider container={appContainer}>
     <ThemeProvider theme={THEME}>
       <GlobalStyles />
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <BrowserRouter>
+        <Switch>
+          {Router.map(({ path, component }) => (
+            <Route key={path} exact path={path} component={component} />
+          ))}
+        </Switch>
+      </BrowserRouter>
     </ThemeProvider>
-  );
-};
+  </DependencyProvider>
+);
