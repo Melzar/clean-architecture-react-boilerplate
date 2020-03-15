@@ -1,44 +1,132 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Clean Architecture React Boilerplate
 
-## Available Scripts
+### DESCRIPTION
 
-In the project directory, you can run:
+This repository is a real life example of Clean Architecture with use of `React.js` and `Typescript`
 
-### `yarn start`
+TODO DIAGRAM
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+##### Technologies used
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+1. `Typescript` ( `v3.7.5` )
+2. `Inversify.js`
+4. `React.js`
 
-### `yarn test`
+##### Structure
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. ui
 
-### `yarn build`
+        Contains definition of presentation layer like controller, express setup etc  
+        
+2. domain
+    
+        Contains definition of use cases, DTO's, contracts for repositories
+        
+3. data 
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+        Contains definition of data sources
+        
+4. ioc ( `Dependency injection layer` )
+        
+        Contains definition for Container and whole project dependencies
+        
+##### What is supported?
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+TODO       
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+##### Reference
 
-### `yarn eject`
+TODO
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### PREREQUISITIES
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* `Yarn`
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### SETUP
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+TODO
+       
+### HOW TO RUN LOCALLY
 
-## Learn More
+1. Follow `SETUP` section first and install `PREREQUISITIES`
+2. `Yarn install` - installing dependencies
+3. `Yarn start` - run app
+       
+### TESTING
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+TODO
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Mutational Testing
+
+TODO
+
+### APPLIED CONCEPTS
+
+There are some universal concepts in programming ( designed patterns ) which are common for general engineering but
+it's not always obvious how to use environment specific concepts. In this boilerplate I'm going to show how to handle that.
+
+#### Request Object
+
+Request object defines parameters / input to specific module input ( domain / infrastructure ), and holds
+required data which cannot be changed on the fly.
+
+#### Mocking
+
+TODO
+
+#### Mapper
+
+Simple concept where one module data structure is translated to another module
+
+##### Data -> Domain Mapper
+
+TODO
+
+##### Domain -> UI Mapper 
+
+TODO
+
+#### Seeds
+
+Used for local development or testing - it's just data for specific use cases which can be also used for dev
+environment where QA's can test specific endpoints or screens. It's also useful as start data for local development 
+especially when you are working as a full stack.
+
+#### Tests parallelization
+
+TODO
+
+#### Mutational testing
+
+TODO
+
+#### Integration testing
+
+TODO
+
+### STILL TODO
+
+* Provide example of marionette testing with use of react-testing-library ( alternative to enzyme )
+* Provide example of mutational testing with react
+* Provide example of BDD integration with cucumber use and Cypress
+* Provide few examples of UI testing
+* Provide examples how to group tests by tags in Cucumber
+* Introduce mocking system to project with DataStore module
+* Implement Data module with available sources based on Graphql
+* Implement state management `xstate` or `apollo`
+* Introduce missing few screens with more examples regarding navigator pattern
+* Add more common components for general usecases
+* Introduce Request Objects to project
+* Introduce mappers to project
+* Introduce local storage integration
+* Introduce way of thinking understood as `Data Space` which will simplify data and content management across specific
+  screen
+* Introduce and explain communication between screen with `Data Space` and nested widgets
+* Add CHANGELOG v1 when boilerplate is finished
+* Provide example of handling multiple states ( loaded, completed etc )
+* Provide example of handling errors ( api error, component error )
+* Apply animations
+
+### KNOWN ISSUES
+
+TODO

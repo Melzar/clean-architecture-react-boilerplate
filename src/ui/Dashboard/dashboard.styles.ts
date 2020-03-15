@@ -26,15 +26,9 @@ export const DashboardWrapper = styled.div`
 
 export const DashboardHeader = styled.header`
   align-items: center;
-  background-color: #282c34;
   color: white;
   display: flex;
   flex-direction: column;
-  font-size: calc(10px + 2vmin);
   justify-content: center;
   min-height: 100vh;
-`;
-
-export const DashboardLink = styled.a`
-  color: ${({ theme }) => theme.color.malibu};
 `;

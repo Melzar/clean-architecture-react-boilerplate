@@ -22,7 +22,7 @@ export const useUser = () => {
       const userListResult = await getUserListUseCase.execute();
       setUserList(userListResult);
     })();
-  }, []);
+  }, [getUserListUseCase]);
 
   return {
     userList,
