@@ -2,7 +2,7 @@ import { interfaces } from 'inversify';
 
 import { BaseModule } from 'ioc/BaseModule';
 import { DomainModuleSymbols } from 'domain/DomainModuleSymbols';
-import { bindDependencies } from 'ioc/common/helpers/bindDependencies';
+import { applyDependencies } from 'ioc/common/helpers/applyDependencies';
 import { GetUserListUseCase } from 'domain/useCases/User/GetUserListUseCase';
 import { DataModuleSymbols } from 'data/DataModuleSymbols';
 import { IUserRepository } from 'domain/repositories/IUserRepository';
@@ -26,15 +26,13 @@ export class UserModule extends BaseModule {
     bind<IGetUserListUseCase>(
       DomainModuleSymbols.GET_USER_LIST_USE_CASE
     ).toConstantValue(
-      bindDependencies(GetUserListUseCase, [
-        DataModuleSymbols.USER_REPOSITORY,
-      ])()
+      applyDependencies(GetUserListUseCase, [DataModuleSymbols.USER_REPOSITORY])
     );
   }
 
   private provideUserRepository(bind: interfaces.Bind): void {
     bind<IUserRepository>(DataModuleSymbols.USER_REPOSITORY).toConstantValue(
-      bindDependencies(UserRepository, [DataModuleSymbols.NETWORK_CLIENT])()
+      applyDependencies(UserRepository, [DataModuleSymbols.NETWORK_CLIENT])
     );
   }
 }

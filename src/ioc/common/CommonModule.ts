@@ -1,7 +1,7 @@
 import { interfaces } from 'inversify';
 
 import { BaseModule } from 'ioc/BaseModule';
-import { bindDependencies } from 'ioc/common/helpers/bindDependencies';
+import { applyDependencies } from 'ioc/common/helpers/applyDependencies';
 
 import { DataModuleSymbols } from 'data/DataModuleSymbols';
 import { NetworkClient } from 'data/network/rest/NetworkClient';
@@ -20,7 +20,7 @@ export class CommonModule extends BaseModule {
 
   private provideNetworkClient(bind: interfaces.Bind): void {
     bind<INetworkClient>(DataModuleSymbols.NETWORK_CLIENT).toConstantValue(
-      bindDependencies(NetworkClient)()
+      applyDependencies(NetworkClient)
     );
   }
 }
