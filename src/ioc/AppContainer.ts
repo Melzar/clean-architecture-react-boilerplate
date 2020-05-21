@@ -1,33 +1,20 @@
-import { BaseContainer } from 'ioc/BaseContainer';
+import { Container } from 'inversify';
+
 import { UserModule } from 'ioc/User/UserModule';
 import { CommonModule } from 'ioc/common/CommonModule';
 
-export class AppContainer extends BaseContainer {
-  constructor() {
-    super({
-      defaultScope: 'Singleton',
-      skipBaseClassChecks: true,
-    });
-  }
+export const initializeContainer = (): Container => {
+  const container = new Container({
+    defaultScope: 'Singleton',
+    skipBaseClassChecks: true,
+  });
 
-  /**
-   * @description Order of initialization matters
-   */
-  init(): void {
-    this.provideCommonModule();
+  container.load(CommonModule);
+  container.load(UserModule);
 
-    this.provideUserModule();
-  }
+  return container;
+};
 
-  private provideCommonModule(): void {
-    this.load(new CommonModule());
-  }
-
-  private provideUserModule(): void {
-    this.load(new UserModule());
-  }
-}
-
-const appContainer = new AppContainer();
+const appContainer = initializeContainer();
 
 export { appContainer };
