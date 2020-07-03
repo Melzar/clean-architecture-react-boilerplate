@@ -2,6 +2,9 @@ import styledReact, { CreateStyled } from '@emotion/styled';
 import { css, keyframes } from '@emotion/core';
 
 import { Theme } from 'ui/common/types/theme';
+import { RoundedCounterWrapper } from 'ui/common/components/RoundedCounter/RoundedCounter.styles';
+import { AngledContentBoxContainer } from 'ui/common/components/Layout/AngledContentBox/AngledContentBox.styles';
+import { ButtonPrimary } from 'ui/common/components/Buttons/ButtonPrimary/ButtonPrimary';
 
 const styled = styledReact as CreateStyled<Theme>;
 
@@ -16,19 +19,29 @@ const DashboardLogoSpin = keyframes`
 
 export const DashboardLogo = css`
   animation: ${DashboardLogoSpin} infinite 20s linear;
-  height: 40vmin;
+  height: 200px;
   pointer-events: none;
 `;
 
 export const DashboardWrapper = styled.div`
-  text-align: center;
+  ${AngledContentBoxContainer} {
+    flex-direction: column;
+    height: 50vh;
+    ${RoundedCounterWrapper} {
+      align-self: flex-start;
+      margin-left: auto;
+    }
+    ${ButtonPrimary} {
+      align-self: center;
+      margin-bottom: 35px;
+      margin-top: auto;
+    }
+  }
 `;
 
-export const DashboardHeader = styled.header`
+export const DashboardContainer = styled.div`
   align-items: center;
-  color: white;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  min-height: 100vh;
+  height: 50vh;
 `;

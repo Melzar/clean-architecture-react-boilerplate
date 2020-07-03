@@ -1,8 +1,4 @@
-import styledReact, { CreateStyled } from '@emotion/styled';
-
-import { Theme } from 'ui/common/types/theme';
-
-const styled = styledReact as CreateStyled<Theme>;
+import styled from '@emotion/styled';
 
 export const Button = styled.button`
   align-items: center;
@@ -12,5 +8,6 @@ export const Button = styled.button`
   display: inline-flex;
   font-size: 18px;
   height: 45px;
+  line-height: 1px;
   padding: 0 20px;
 `;

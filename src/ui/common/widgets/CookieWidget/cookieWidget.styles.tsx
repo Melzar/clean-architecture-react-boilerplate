@@ -3,7 +3,7 @@ import { css } from '@emotion/core';
 export const CookieWidgetWrapper = css`
   bottom: 25px;
   left: 25px;
-  position: absolute;
+  position: fixed;
 `;
 
 export const CookieIcon = css`

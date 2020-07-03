@@ -112,13 +112,13 @@ TODO
 * Provide few examples of UI testing
 * Provide examples how to group tests by tags in Cucumber
 * Introduce mocking system to project with DataStore module
+* Introduce interactive mocking simulator
 * Implement Data module with available sources based on Graphql
 * Implement state management `recoil`
 * Introduce `urql`
 * Introduce Kubernetes
 * Introduce docker
 * Introduce missing few screens with more examples regarding navigator pattern
-* Add more common components for general usecases
 * Introduce Request Objects to project
 * Introduce mappers to project
 * Introduce local storage integration
