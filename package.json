@@ -13,8 +13,11 @@
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
     "@types/react-router-dom": "^5.1.5",
+    "@wufe/mapper": "^0.5.0",
     "customize-cra": "^0.9.1",
     "emotion-theming": "^10.0.27",
+    "graphql": "^14.7.0",
+    "graphql-tools": "^5.0.0",
     "inversify": "^5.0.1",
     "react": "^16.13.1",
     "react-app-rewired": "^2.1.6",
@@ -23,7 +26,9 @@
     "react-scripts": "3.4.1",
     "typeface-lato": "^0.0.75",
     "typeface-oswald": "^1.1.4",
-    "typescript": "~3.9.3"
+    "typescript": "~3.9.3",
+    "urql": "^1.9.8",
+    "urql-exchange-schema": "^0.1.0"
   },
   "devDependencies": {
     "@babel/helper-call-delegate": "^7.8.7",

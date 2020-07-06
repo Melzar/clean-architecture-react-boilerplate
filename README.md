@@ -8,8 +8,9 @@ TODO DIAGRAM
 
 ##### Technologies used
 
-1. `Typescript` ( `v3.7.5` )
+1. `Typescript` ( `v3.9.3` )
 2. `Inversify.js`
+3. `GraphQL`
 4. `React.js`
 
 ##### Structure
@@ -111,11 +112,9 @@ TODO
 * Provide example of BDD integration with cucumber use and Cypress
 * Provide few examples of UI testing
 * Provide examples how to group tests by tags in Cucumber
-* Introduce mocking system to project with DataStore module
+* Introduce DataStore module
 * Introduce interactive mocking simulator
-* Implement Data module with available sources based on Graphql
 * Implement state management `recoil`
-* Introduce `urql`
 * Introduce Kubernetes
 * Introduce docker
 * Introduce missing few screens with more examples regarding navigator pattern

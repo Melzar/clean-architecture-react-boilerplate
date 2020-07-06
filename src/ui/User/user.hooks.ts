@@ -5,9 +5,9 @@ import { useHistory } from 'react-router-dom';
 import { useInjection } from 'ui/common/hooks/DependencyProvider/dependencyProvider.hooks';
 import { navigateToDashboard } from 'ui/User/user.navigator';
 
-import { User } from 'domain/models/User';
+import { User } from 'domain/User/models/User';
 import { DomainModuleSymbols } from 'domain/DomainModuleSymbols';
-import { IGetUserListUseCase } from 'domain/useCases/User/IGetUserListUseCase';
+import { IGetUserListUseCase } from 'domain/User/useCases/IGetUserListUseCase';
 
 export const useUser = () => {
   const [userList, setUserList] = useState<User[]>([]);

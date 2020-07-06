@@ -6,7 +6,7 @@ function applyDependencies(
   func: Function,
   dependencies: interfaces.ServiceIdentifier<unknown>[] = []
 ) {
-  const injections = dependencies.map(dependency =>
+  const injections = dependencies.map((dependency) =>
     appContainer.get(dependency)
   );
   return func.apply(func, injections);
