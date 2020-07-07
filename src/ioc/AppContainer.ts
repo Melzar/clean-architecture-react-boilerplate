@@ -8,7 +8,11 @@ const appContainer = new Container({
   skipBaseClassChecks: true,
 });
 
-appContainer.load(NetworkModule);
-appContainer.load(UserModule);
+const initializeContainer = () => {
+  appContainer.load(NetworkModule);
+  appContainer.load(UserModule);
+};
 
-export { appContainer };
+initializeContainer();
+
+export { appContainer, initializeContainer };

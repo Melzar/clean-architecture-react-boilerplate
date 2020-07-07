@@ -11,6 +11,7 @@ import { GlobalStyles } from 'ui/common/styles/Global';
 
 import { DependencyProvider } from 'ui/common/hooks/DependencyProvider/DependencyProvider';
 import { Router } from 'ui/common/routing/router';
+import { MockButtonWidget } from 'ui/common/widgets/MockButtonWidget/MockButtonWidget';
 
 export const App = () => (
   <DependencyProvider container={appContainer}>
@@ -23,6 +24,7 @@ export const App = () => (
           ))}
         </Switch>
       </BrowserRouter>
+      <MockButtonWidget />
     </ThemeProvider>
   </DependencyProvider>
 );

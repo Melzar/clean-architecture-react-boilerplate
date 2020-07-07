@@ -9,11 +9,9 @@ export const UrQLClient = (): INetworkClient<Client> => ({
   client: createClient({
     url: process.env.REACT_APP_API_URL || '',
     suspense: true,
-    // ...(window.localStorage.getItem('MOCKED') && {
-    //   exchanges: [schemaExchange(mockedSchema())],
-    // }),
-
-    exchanges: [schemaExchange(mockedSchema())],
+    ...(window.localStorage.getItem('MOCK') === 'true' && {
+      exchanges: [schemaExchange(mockedSchema())],
+    }),
   }),
   initialize() {},
 });
