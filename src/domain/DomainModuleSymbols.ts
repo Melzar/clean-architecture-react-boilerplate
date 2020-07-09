@@ -1,3 +1,4 @@
 export const DomainModuleSymbols = {
-  GET_USER_LIST_USE_CASE: Symbol.for('GetUserListUseCase'),
+  GET_USERS_USE_CASE: Symbol.for('GetUsersUseCase'),
+  GET_USER_EQUIPMENT_USE_CASE: Symbol.for('GetUserEquipmentUseCase'),
 };

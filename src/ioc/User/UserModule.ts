@@ -1,14 +1,24 @@
 import { ContainerModule, interfaces } from 'inversify';
 
+import { RecoilValue } from 'recoil/dist';
+
 import { applyDependencies } from 'ioc/common/helpers/applyDependencies';
 
 import { DomainModuleSymbols } from 'domain/DomainModuleSymbols';
-import { GetUserListUseCase } from 'domain/User/useCases/GetUserListUseCase';
+import { GetUsersUseCase } from 'domain/User/useCases/GetUsersUseCase';
 import { IUserRepository } from 'domain/User/repositories/IUserRepository';
-import { IGetUserListUseCase } from 'domain/User/useCases/IGetUserListUseCase';
+import { IUserEquipmentRepository } from 'domain/User/repositories/IUserEquipmentRepository';
+import { IGetUsersUseCase } from 'domain/User/useCases/IGetUsersUseCase';
+import { IGetUserEquipmentUseCase } from 'domain/User/useCases/IGetUserEquipmentUseCase';
+
+import { DataStoreModuleSymbols } from 'dataStore/DataStoreModuleSymbols';
+import { fetchSelectedUserEquipmentList } from 'dataStore/User/selectors/fetchSelectedUserEquipmentList';
 
 import { DataModuleSymbols } from 'data/DataModuleSymbols';
 import { UserRepository } from 'data/network/graphql/User/UserRepository';
+import { UserEquipmentRepository } from 'data/network/graphql/User/UserEquipmentRepository';
+import { selectedUserEquipmentList } from 'dataStore/User/selectors/selectedUserEquipmentList';
+import { GetUserEquipmentUseCase } from 'domain/User/useCases/GetUserEquipmentUseCase';
 
 const initializeUserModule = (bind: interfaces.Bind) => {
   bind<IUserRepository>(DataModuleSymbols.USER_REPOSITORY).toConstantValue(
@@ -17,10 +27,41 @@ const initializeUserModule = (bind: interfaces.Bind) => {
       DataModuleSymbols.GRAPHQL_NETWORK_MAPPER,
     ])
   );
-  bind<IGetUserListUseCase>(
-    DomainModuleSymbols.GET_USER_LIST_USE_CASE
+  bind<IUserEquipmentRepository>(
+    DataModuleSymbols.USER_EQUIPMENT_REPOSITORY
   ).toConstantValue(
-    applyDependencies(GetUserListUseCase, [DataModuleSymbols.USER_REPOSITORY])
+    applyDependencies(UserEquipmentRepository, [
+      DataModuleSymbols.GRAPHQL_NETWORK_CLIENT,
+      DataModuleSymbols.GRAPHQL_NETWORK_MAPPER,
+    ])
+  );
+  bind<IGetUsersUseCase>(
+    DomainModuleSymbols.GET_USERS_USE_CASE
+  ).toConstantValue(
+    applyDependencies(GetUsersUseCase, [DataModuleSymbols.USER_REPOSITORY])
+  );
+  bind<IGetUserEquipmentUseCase>(
+    DomainModuleSymbols.GET_USER_EQUIPMENT_USE_CASE
+  ).toConstantValue(
+    applyDependencies(GetUserEquipmentUseCase, [
+      DataModuleSymbols.USER_EQUIPMENT_REPOSITORY,
+    ])
+  );
+
+  // TODO Think how we can abstract it so it won't be library dependent
+  bind<RecoilValue<any>>(
+    DataStoreModuleSymbols.FETCH_SELECTED_USER_EQUIPMENT_LIST_SELECTOR
+  ).toConstantValue(
+    applyDependencies(fetchSelectedUserEquipmentList, [
+      DomainModuleSymbols.GET_USER_EQUIPMENT_USE_CASE,
+    ])
+  );
+  bind<RecoilValue<any>>(
+    DataStoreModuleSymbols.SELECTED_USER_EQUIPMENT_LIST_SELECTOR
+  ).toConstantValue(
+    applyDependencies(selectedUserEquipmentList, [
+      DataStoreModuleSymbols.FETCH_SELECTED_USER_EQUIPMENT_LIST_SELECTOR,
+    ])
   );
 };
 

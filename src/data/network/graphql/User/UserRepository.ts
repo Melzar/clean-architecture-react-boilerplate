@@ -2,8 +2,8 @@ import { Client } from 'urql';
 
 import { IUserRepository } from 'domain/User/repositories/IUserRepository';
 
-import { FetchUsersResponse } from 'data/network/graphql/User/responses/FetchUsersResponse';
-import { FETCH_USERS_QUERY } from 'data/network/graphql/User/gql/FetchUsersQuery';
+import { GetUsersResponse } from 'data/network/graphql/User/responses/GetUsersResponse';
+import { GET_USERS_QUERY } from 'data/network/graphql/User/gql/GetUsersQuery';
 
 import { INetworkMapper } from 'data/network/common/INetworkMapper';
 import { INetworkClient } from 'data/network/common/INetworkClient';
@@ -17,9 +17,9 @@ export const UserRepository = (
   { client }: INetworkClient<Client>,
   { mapper }: INetworkMapper
 ): IUserRepository => ({
-  fetchUsers: async () => {
+  getUsers: async () => {
     const { data } = await client
-      .query<FetchUsersResponse>(FETCH_USERS_QUERY, {})
+      .query<GetUsersResponse>(GET_USERS_QUERY, {})
       .toPromise();
 
     return mapper.map<User[], UserDomain[]>(

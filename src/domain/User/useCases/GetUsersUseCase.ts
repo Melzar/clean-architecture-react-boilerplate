@@ -1,11 +1,11 @@
 import { User } from 'domain/User/models/User';
 import { IUserRepository } from 'domain/User/repositories/IUserRepository';
-import { IGetUserListUseCase } from 'domain/User/useCases/IGetUserListUseCase';
+import { IGetUsersUseCase } from 'domain/User/useCases/IGetUsersUseCase';
 
-export const GetUserListUseCase = (
+export const GetUsersUseCase = (
   userRepository: IUserRepository
-): IGetUserListUseCase => ({
+): IGetUsersUseCase => ({
   execute(): Promise<User[]> {
-    return userRepository.fetchUsers();
+    return userRepository.getUsers();
   },
 });

@@ -1,5 +1,6 @@
 export const DataModuleSymbols = {
   USER_REPOSITORY: Symbol.for('UserRepository'),
+  USER_EQUIPMENT_REPOSITORY: Symbol.for('UserEquipmentRepository'),
 
   NETWORK_CLIENT: Symbol.for('NetworkClient'), // TODO to be defined later
   GRAPHQL_NETWORK_CLIENT: Symbol.for('GraphQLNetworkClient'),

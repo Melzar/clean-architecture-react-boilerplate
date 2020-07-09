@@ -3,6 +3,7 @@ import { Mapper } from '@wufe/mapper';
 import { INetworkMapper } from 'data/network/common/INetworkMapper';
 
 import { userToUserDomain } from 'data/network/graphql/common/mappings/userToUserDomain';
+import { equipmentToEquipmentDomain } from 'data/network/graphql/common/mappings/equipmentToEquipmentDomain';
 
 export const GraphQLNetworkMapper = (): INetworkMapper => ({
   mapper: new Mapper(),
@@ -13,5 +14,6 @@ export const GraphQLNetworkMapper = (): INetworkMapper => ({
     );
 
     userToUserDomain(this.mapper);
+    equipmentToEquipmentDomain(this.mapper);
   },
 });

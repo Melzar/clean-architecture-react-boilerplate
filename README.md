@@ -112,23 +112,19 @@ TODO
 * Provide example of BDD integration with cucumber use and Cypress
 * Provide few examples of UI testing
 * Provide examples how to group tests by tags in Cucumber
-* Introduce DataStore module
-* Implement state management `recoil`
 * Introduce Kubernetes
 * Introduce docker
 * Introduce missing few screens with more examples regarding navigator pattern
-* Introduce Request Objects to project
 * Introduce UI Mappers to project
-* Introduce local storage integration
 * Introduce way of thinking understood as `Data Space` which will simplify data and content management across specific
   screen
 * Introduce and explain communication between screen with `Data Space` and nested widgets
+* Introduce more abstract way of `dataStore` integration ( OPTIONAL ) 
 * Add CHANGELOG v1 when boilerplate is finished
-* Provide example of handling multiple states ( loaded, completed etc )
 * Provide example of handling errors ( api error, component error )
 * Apply animations
 * Extend mocking switch to live response editor request preview, delay etc
 
 ### KNOWN ISSUES
 
-TODO
+* Recoil is in experimental state, so you may notice some console errors - [Issue link](https://github.com/facebookexperimental/Recoil/issues/12)

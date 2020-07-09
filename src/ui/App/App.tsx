@@ -3,6 +3,8 @@ import { ThemeProvider } from 'emotion-theming';
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
+import { RecoilRoot } from 'recoil';
+
 // eslint-disable-next-line no-restricted-imports
 import { appContainer } from 'ioc/AppContainer';
 
@@ -15,16 +17,20 @@ import { MockButtonWidget } from 'ui/common/widgets/MockButtonWidget/MockButtonW
 
 export const App = () => (
   <DependencyProvider container={appContainer}>
-    <ThemeProvider theme={THEME}>
-      <GlobalStyles />
-      <BrowserRouter>
-        <Switch>
-          {Router.map(({ path, component }) => (
-            <Route key={path} exact path={path} component={component} />
-          ))}
-        </Switch>
-      </BrowserRouter>
-      <MockButtonWidget />
-    </ThemeProvider>
+    <RecoilRoot>
+      <React.Suspense fallback={<div>Loading...</div>}>
+        <ThemeProvider theme={THEME}>
+          <GlobalStyles />
+          <BrowserRouter>
+            <Switch>
+              {Router.map(({ path, component }) => (
+                <Route key={path} exact path={path} component={component} />
+              ))}
+            </Switch>
+          </BrowserRouter>
+          <MockButtonWidget />
+        </ThemeProvider>
+      </React.Suspense>
+    </RecoilRoot>
   </DependencyProvider>
 );

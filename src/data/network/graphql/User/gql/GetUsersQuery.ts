@@ -1,4 +1,4 @@
-export const FETCH_USERS_QUERY = `
+export const GET_USERS_QUERY = `
   {
     users {
       id

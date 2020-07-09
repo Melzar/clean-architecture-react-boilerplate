@@ -8,6 +8,9 @@
       "domain/*": [
         "./src/domain/*"
       ],
+      "dataStore/*": [
+        "./src/dataStore/*"
+      ],
       "data/*": [
         "./src/data/*"
       ],
