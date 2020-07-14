@@ -124,6 +124,7 @@ TODO
 * Provide example of handling errors ( api error, component error )
 * Apply animations
 * Extend mocking switch to live response editor request preview, delay etc
+* Extend routing examples to handle authenticated routes, role routes etc
 
 ### KNOWN ISSUES
 

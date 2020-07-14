@@ -6,6 +6,19 @@ export const schema = `
         equipment(id: ID!): Equipment!
    }
    
+   type Mutation {
+        authenticate(input: AuthenticateInput): Authentication!
+   }
+   
+   input AuthenticateInput {
+        login: String!
+        password: String!
+   }
+   
+   type Authentication {
+        token: String! 
+   }
+   
    type User {
         id: ID!
         equipment: [Equipment!]!

@@ -14,7 +14,7 @@ export const userQueries = {
   users: (): User[] => {
     return [users['1'], users['2']];
   },
-  user: (_root: User, { id }: { id: string }) => {
+  user: (_: any, { id }: { id: string }) => {
     return users[id];
   },
 };
