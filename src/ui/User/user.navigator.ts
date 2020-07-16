@@ -3,5 +3,9 @@ import { History } from 'history';
 import { RouterPaths } from 'ui/common/routing/router.paths';
 
 export const navigateToDashboard = (history: History) => {
-  history.push(RouterPaths.DASHBOARD);
+  history.goBack();
+};
+
+export const navigateToUserDetails = (history: History, id: string) => {
+  history.push(RouterPaths.USER_DETAILS.replace(':id', id));
 };

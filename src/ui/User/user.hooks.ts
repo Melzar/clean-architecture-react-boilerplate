@@ -1,11 +1,14 @@
-import { useEffect, useState } from 'react';
+import MouseEvent, { useEffect, useState } from 'react';
 
 import { useHistory } from 'react-router-dom';
 
 import { RecoilState, useRecoilState } from 'recoil';
 
 import { useInjection } from 'ui/common/hooks/DependencyProvider/dependencyProvider.hooks';
-import { navigateToDashboard } from 'ui/User/user.navigator';
+import {
+  navigateToDashboard,
+  navigateToUserDetails,
+} from 'ui/User/user.navigator';
 
 import { User } from 'domain/User/models/User';
 import { DomainModuleSymbols } from 'domain/DomainModuleSymbols';
@@ -31,7 +34,13 @@ export const useUser = () => {
 
   const onGoToDashboardScreen = () => navigateToDashboard(history);
   const onUserClick = (id: string | null) => setSelectedUser(id);
-
+  const onUserDetailsClick = (
+    event: React.MouseEvent<HTMLElement>,
+    id: string
+  ) => {
+    event.stopPropagation();
+    navigateToUserDetails(history, id);
+  };
   useEffect(() => {
     (async () => {
       const userListResult = await getUserListUseCase.execute();
@@ -45,5 +54,6 @@ export const useUser = () => {
     selectedUser,
     onGoToDashboardScreen,
     onUserClick,
+    onUserDetailsClick,
   };
 };
