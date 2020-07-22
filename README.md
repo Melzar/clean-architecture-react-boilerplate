@@ -114,7 +114,6 @@ TODO
 * Provide examples how to group tests by tags in Cucumber
 * Introduce Kubernetes
 * Introduce docker
-* Introduce missing few screens with more examples regarding navigator pattern
 * Introduce UI Mappers to project
 * Introduce way of thinking understood as `Data Space` which will simplify data and content management across specific
   screen

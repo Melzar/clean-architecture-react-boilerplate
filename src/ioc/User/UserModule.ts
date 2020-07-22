@@ -5,20 +5,22 @@ import { RecoilValue } from 'recoil/dist';
 import { applyDependencies } from 'ioc/common/helpers/applyDependencies';
 
 import { DomainModuleSymbols } from 'domain/DomainModuleSymbols';
+import { GetUserUseCase } from 'domain/User/useCases/GetUserUseCase';
 import { GetUsersUseCase } from 'domain/User/useCases/GetUsersUseCase';
+import { GetUserEquipmentUseCase } from 'domain/User/useCases/GetUserEquipmentUseCase';
 import { IUserRepository } from 'domain/User/repositories/IUserRepository';
 import { IUserEquipmentRepository } from 'domain/User/repositories/IUserEquipmentRepository';
+import { IGetUserUseCase } from 'domain/User/useCases/IGetUserUseCase';
 import { IGetUsersUseCase } from 'domain/User/useCases/IGetUsersUseCase';
 import { IGetUserEquipmentUseCase } from 'domain/User/useCases/IGetUserEquipmentUseCase';
 
 import { DataStoreModuleSymbols } from 'dataStore/DataStoreModuleSymbols';
 import { fetchSelectedUserEquipmentList } from 'dataStore/User/selectors/fetchSelectedUserEquipmentList';
+import { selectedUserEquipmentList } from 'dataStore/User/selectors/selectedUserEquipmentList';
 
 import { DataModuleSymbols } from 'data/DataModuleSymbols';
 import { UserRepository } from 'data/network/graphql/User/UserRepository';
 import { UserEquipmentRepository } from 'data/network/graphql/User/UserEquipmentRepository';
-import { selectedUserEquipmentList } from 'dataStore/User/selectors/selectedUserEquipmentList';
-import { GetUserEquipmentUseCase } from 'domain/User/useCases/GetUserEquipmentUseCase';
 
 const initializeUserModule = (bind: interfaces.Bind) => {
   bind<IUserRepository>(DataModuleSymbols.USER_REPOSITORY).toConstantValue(
@@ -35,6 +37,9 @@ const initializeUserModule = (bind: interfaces.Bind) => {
       DataModuleSymbols.GRAPHQL_NETWORK_MAPPER,
     ])
   );
+  bind<IGetUserUseCase>(DomainModuleSymbols.GET_USER_USE_CASE).toConstantValue(
+    applyDependencies(GetUserUseCase, [DataModuleSymbols.USER_REPOSITORY])
+  );
   bind<IGetUsersUseCase>(
     DomainModuleSymbols.GET_USERS_USE_CASE
   ).toConstantValue(
@@ -47,7 +52,6 @@ const initializeUserModule = (bind: interfaces.Bind) => {
       DataModuleSymbols.USER_EQUIPMENT_REPOSITORY,
     ])
   );
-
   // TODO Think how we can abstract it so it won't be library dependent
   bind<RecoilValue<any>>(
     DataStoreModuleSymbols.FETCH_SELECTED_USER_EQUIPMENT_LIST_SELECTOR

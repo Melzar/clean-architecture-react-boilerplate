@@ -1,11 +1,18 @@
 import { useHistory } from 'react-router-dom';
 
-import { navigateToUsersScreen } from 'ui/Dashboard/dashboard.navigator';
+import {
+  navigateToEquipmentScreen,
+  navigateToUsersScreen,
+} from 'ui/Dashboard/dashboard.navigator';
 
 export const useDashboard = () => {
   const history = useHistory();
 
-  const onGoToUserScreenTap = () => navigateToUsersScreen(history);
+  const onGoToUserScreenClick = () => navigateToUsersScreen(history);
+  const onGoToEquipmentScreenClick = () => navigateToEquipmentScreen(history);
 
-  return onGoToUserScreenTap;
+  return {
+    onGoToUserScreenClick,
+    onGoToEquipmentScreenClick,
+  };
 };

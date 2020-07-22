@@ -33,6 +33,7 @@ export const DashboardWrapper = styled.div`
     }
     ${ButtonPrimary} {
       align-self: center;
+      flex-shrink: 0;
       margin-bottom: 35px;
       margin-top: auto;
     }

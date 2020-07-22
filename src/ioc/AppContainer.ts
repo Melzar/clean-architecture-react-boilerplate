@@ -4,6 +4,7 @@ import { UserModule } from 'ioc/User/UserModule';
 import { NetworkModule } from 'ioc/common/NetworkModule';
 import { AuthModule } from 'ioc/Auth/common/AuthModule';
 import { LoginModule } from 'ioc/Auth/Login/LoginModule';
+import { EquipmentModule } from 'ioc/Equipment/EquipmentModule';
 
 const appContainer = new Container({
   defaultScope: 'Singleton',
@@ -18,6 +19,7 @@ const initializeContainer = () => {
 
   appContainer.load(LoginModule);
   appContainer.load(UserModule);
+  appContainer.load(EquipmentModule);
 };
 
 initializeContainer();

@@ -1,17 +1,29 @@
 import React from 'react';
 
 import { useUserDetails } from 'ui/UserDetails/userDetails.hooks';
-import { ButtonPrimary } from 'ui/common/components/Buttons/ButtonPrimary/ButtonPrimary';
+import { ContentBox } from 'ui/common/components/Layout/ContentBox/ContentBox';
+import { NavigatorButton } from 'ui/UserDetails/userDetails.styles';
+import { TitleSection } from 'ui/common/components/Typography/TitleSection/TitleSection';
+import { Text } from 'ui/common/components/Typography/Text/Text';
+import { ContainerBox } from 'ui/common/components/Layout/ContainerBox/ContainerBox';
 
 export const UserDetails = () => {
-  const { id, onGoToUserListClick } = useUserDetails();
+  const { user, onGoToUserListClick } = useUserDetails();
 
   return (
-    <div>
-      UserDetails {id}
-      <ButtonPrimary type="button" onClick={onGoToUserListClick}>
+    <ContainerBox>
+      <ContentBox>
+        <TitleSection>
+          {user?.firstName} {user?.lastName}
+        </TitleSection>
+        <div>
+          <Text> User ID: {user?.id} </Text>
+          <Text> Equipment count: {user?.equipment?.length} </Text>
+        </div>
+      </ContentBox>
+      <NavigatorButton type="button" onClick={onGoToUserListClick}>
         Go to users list
-      </ButtonPrimary>
-    </div>
+      </NavigatorButton>
+    </ContainerBox>
   );
 };

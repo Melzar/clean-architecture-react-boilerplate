@@ -3,6 +3,7 @@ export const GET_USER_EQUIPMENT_QUERY = `
         user(id: $id) {
             equipment {
                 id
+                name
             }
         }
     }

@@ -10,5 +10,6 @@ export const ContentBox = styled.div<Props>`
   border-radius: 5px;
   box-shadow: ${({ theme }) => `0 0 10px 0px ${theme.shadow.xsmall}`};
   display: flex;
+  flex-direction: column;
   padding: 20px;
 `;

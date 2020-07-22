@@ -1,6 +1,8 @@
 export const DataModuleSymbols = {
   AUTH_REPOSITORY: Symbol.for('AuthRepository'),
 
+  EQUIPMENT_REPOSITORY: Symbol.for('EquipmentRepository'),
+
   USER_REPOSITORY: Symbol.for('UserRepository'),
   USER_EQUIPMENT_REPOSITORY: Symbol.for('UserEquipmentRepository'),
 

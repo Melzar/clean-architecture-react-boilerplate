@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import { useUser } from 'ui/User/user.hooks';
 
@@ -7,8 +7,10 @@ import { Grid } from 'ui/common/components/Grid/Grid';
 import { GridRow } from 'ui/common/components/GridRow/GridRow';
 import { GridCellHeader } from 'ui/common/components/GridCellHeader/GridCellHeader';
 import { GridCell } from 'ui/common/components/GridCell/GridCell';
+import { ContainerBox } from 'ui/common/components/Layout/ContainerBox/ContainerBox';
+import { TitlePage } from 'ui/common/components/Typography/TitlePage/TitlePage';
 
-import { UserGridWrapper, UserWrapper } from 'ui/User/user.styles';
+import { NavigatorButton } from 'ui/User/user.styles';
 
 export const User = () => {
   const {
@@ -23,21 +25,27 @@ export const User = () => {
   const selectedRow = (id: string) => selectedUser === id;
 
   return (
-    <UserWrapper>
-      <UserGridWrapper>
-        <Grid>
+    <ContainerBox>
+      <TitlePage>Users List</TitlePage>
+      <Grid>
+        <thead>
           <GridRow>
             <GridCellHeader>ID</GridCellHeader>
+            <GridCellHeader>FIRST NAME</GridCellHeader>
+            <GridCellHeader>LAST NAME</GridCellHeader>
             <GridCellHeader />
           </GridRow>
-          {users.map(({ id }) => (
-            <>
+        </thead>
+        <tbody>
+          {users.map(({ id, firstName, lastName }) => (
+            <Fragment key={id}>
               <GridRow
-                key={id}
                 onClick={() => onUserClick(id)}
                 selected={selectedRow(id)}
               >
                 <GridCell>{id}</GridCell>
+                <GridCell>{firstName}</GridCell>
+                <GridCell>{lastName}</GridCell>
                 <GridCell>
                   <ButtonPrimary
                     type="button"
@@ -49,22 +57,20 @@ export const User = () => {
               </GridRow>
               {selectedRow(id) && (
                 <GridRow>
-                  <GridCell colSpan={2}>
+                  <GridCell colSpan={4}>
                     {equipment.map(({ id: EquipmentID }) => (
                       <div key={EquipmentID}>Equipment {EquipmentID}</div>
                     ))}
                   </GridCell>
                 </GridRow>
               )}
-            </>
+            </Fragment>
           ))}
-        </Grid>
-      </UserGridWrapper>
-      <div>
-        <ButtonPrimary type="button" onClick={onGoToDashboardScreen}>
-          Go to dashboard
-        </ButtonPrimary>
-      </div>
-    </UserWrapper>
+        </tbody>
+      </Grid>
+      <NavigatorButton type="button" onClick={onGoToDashboardScreen}>
+        Go to dashboard
+      </NavigatorButton>
+    </ContainerBox>
   );
 };

@@ -2,6 +2,7 @@ import { css } from '@emotion/core';
 
 export const CookieWidgetWrapper = css`
   bottom: 25px;
+  flex-direction: row;
   left: 25px;
   position: fixed;
 `;

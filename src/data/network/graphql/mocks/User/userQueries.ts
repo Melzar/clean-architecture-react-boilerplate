@@ -6,8 +6,11 @@ type Users = {
 };
 
 const users: Users = {
-  '1': new User(1, [new Equipment(1)]),
-  '2': new User(2, [new Equipment(1), new Equipment(2)]),
+  '1': new User(1, 'John', 'Doe', [new Equipment(1, 'Knife')]),
+  '2': new User(2, 'John', 'Smith', [
+    new Equipment(1, 'Knife'),
+    new Equipment(2, 'Axe'),
+  ]),
 };
 
 export const userQueries = {

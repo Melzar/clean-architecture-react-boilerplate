@@ -21,10 +21,13 @@ export const schema = `
    
    type User {
         id: ID!
+        firstName: String!
+        lastName: String!
         equipment: [Equipment!]!
    }
    
    type Equipment {
         id: ID!
+        name: String!
    }
 `;
