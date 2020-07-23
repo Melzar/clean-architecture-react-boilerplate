@@ -107,6 +107,7 @@ TODO
 
 ### STILL TODO
 
+* Provide infrastructure diagram
 * Provide example of marionette testing with use of react-testing-library ( alternative to enzyme )
 * Provide example of mutational testing with react
 * Provide example of BDD integration with cucumber use and Cypress
@@ -114,7 +115,6 @@ TODO
 * Provide examples how to group tests by tags in Cucumber
 * Introduce Kubernetes
 * Introduce docker
-* Introduce UI Mappers to project
 * Introduce way of thinking understood as `Data Space` which will simplify data and content management across specific
   screen
 * Introduce and explain communication between screen with `Data Space` and nested widgets

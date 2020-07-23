@@ -2,9 +2,10 @@ import { Container } from 'inversify';
 
 import { UserModule } from 'ioc/User/UserModule';
 import { NetworkModule } from 'ioc/common/NetworkModule';
+import { EquipmentModule } from 'ioc/Equipment/EquipmentModule';
 import { AuthModule } from 'ioc/Auth/common/AuthModule';
 import { LoginModule } from 'ioc/Auth/Login/LoginModule';
-import { EquipmentModule } from 'ioc/Equipment/EquipmentModule';
+import { PresentationModule } from 'ioc/common/PresentationModule';
 
 const appContainer = new Container({
   defaultScope: 'Singleton',
@@ -13,6 +14,8 @@ const appContainer = new Container({
 
 const initializeContainer = () => {
   appContainer.load(NetworkModule);
+
+  appContainer.load(PresentationModule);
 
   // TODO It's shared module think later about folder structure
   appContainer.load(AuthModule);

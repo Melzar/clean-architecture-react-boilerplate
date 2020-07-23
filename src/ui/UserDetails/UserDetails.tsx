@@ -13,9 +13,7 @@ export const UserDetails = () => {
   return (
     <ContainerBox>
       <ContentBox>
-        <TitleSection>
-          {user?.firstName} {user?.lastName}
-        </TitleSection>
+        <TitleSection>{user?.fullName}</TitleSection>
         <div>
           <Text> User ID: {user?.id} </Text>
           <Text> Equipment count: {user?.equipment?.length} </Text>
